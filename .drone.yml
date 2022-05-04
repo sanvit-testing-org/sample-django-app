@@ -41,6 +41,15 @@ steps:
   image: alpine
   commands:
     - exit 0
+
+- name: on-failed
+  image: alpine
+  commands:
+    - echo "failed"
+    - env
+  when:
+    status:
+    - failure
   # depends_on:
   # - frontend
   # - backend
