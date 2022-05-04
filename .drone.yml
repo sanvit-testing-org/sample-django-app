@@ -8,20 +8,23 @@ steps:
   commands:
   - pip install -r requirements.txt -t .
 
-
 - name: django-background
   image: python:3.9
   detach: true
   commands:
   - python manage.py runserver 0.0.0.0:8000
 
-- name: frontend
+- name: wait for django
+  image: alpine
+  commands:
+    - sleep 10
+
+- name: check if django is running
   image: alpine/curl:3.14
   commands:
-  - sleep 10
-  - "curl -I -H \"Host: localhost\" http://django-background:8000/ > a.log"
+  - "curl -I -H \"Host: localhost\" http://django-background:8000/"
 
-- name: runner
+- name: test 1
   image: alpine
   commands:
     - echo "Hello World"
