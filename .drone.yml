@@ -9,7 +9,7 @@ steps:
   - pip install -r requirements.txt -t .
 
 
-- name: backend
+- name: django-background
   image: python:3.9
   detach: true
   commands:
@@ -26,6 +26,7 @@ steps:
   commands:
     - echo "Hello World"
     - cat a.log
+    - echo $env
   # depends_on:
   # - frontend
   # - backend
