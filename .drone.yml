@@ -12,7 +12,6 @@ steps:
   image: python:3.9
   detach: true
   commands:
-  - sleep 20
   - python manage.py runserver 0.0.0.0:8000
 
 - name: wait-for-django
