@@ -1,32 +1,55 @@
 kind: pipeline
 type: docker
-name: default
+name: Evaluate
 
 steps:
-- name: install dependency
+- name: install-dependencies
   image: python:3.9
   commands:
   - pip install -r requirements.txt -t .
 
-
-- name: django-background
+- name: django-server
   image: python:3.9
   detach: true
   commands:
   - python manage.py runserver 0.0.0.0:8000
 
-- name: frontend
+- name: wait-for-django
   image: alpine/curl:3.14
   commands:
-  - sleep 10
-  - "curl -I -H \"Host: localhost\" http://django-background:8000/ > a.log"
+    - curl --retry 10 --retry-delay 1 --retry-all-errors -s -o /dev/null django-server:8000
 
-- name: runner
+- name: check if django is running
+  image: alpine/curl:3.14
+  commands:
+  - "curl -I -H \"Host: localhost\" http://django-server:8000/"
+  - echo "blah blah blah" > a.log
+
+- name: test 1
   image: alpine
   commands:
     - echo "Hello World"
     - cat a.log
     - env
+
+- name: 한글 스탭
+  image: alpine
+  commands:
+    - echo "한글여기 잘 되나???"
+
+- name: test 3
+  image: alpine
+  commands:
+    - exit 0
+
+- name: on-failed
+  image: alpine
+  commands:
+    - echo "failed"
+    - env
+  when:
+    status:
+    - failure
   # depends_on:
   # - frontend
   # - backend
