@@ -31,6 +31,16 @@ steps:
     - echo "Hello World"
     - cat a.log
     - env
+
+- name: test 2
+  image: alpine
+  commands:
+    - exit 1
+
+- name: test 3
+  image: alpine
+  commands:
+    - exit 0
   # depends_on:
   # - frontend
   # - backend
