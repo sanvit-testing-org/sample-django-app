@@ -3,6 +3,12 @@ type: docker
 name: default
 
 steps:
+- name: install dependency
+  image: python:3.9
+  commands:
+  - pip install -r requirements.txt
+
+
 - name: backend
   image: python:3.9
   detach: true
@@ -13,6 +19,7 @@ steps:
 - name: frontend
   image: alpine/curl:3.14
   commands:
+  - sleep 10
   - curl http://backend:8080/
 
 - name: runner
