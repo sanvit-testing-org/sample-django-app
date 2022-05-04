@@ -17,6 +17,9 @@ steps:
   image: alpine
   commands:
     - echo "Hello World"
+  depends_on:
+  - frontend
+  - backend
 
 # - name: notify
 #   image: plugins/slack
