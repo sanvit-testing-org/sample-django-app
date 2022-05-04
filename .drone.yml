@@ -15,7 +15,7 @@ steps:
   - python manage.py runserver 0.0.0.0:8000
 
 - name: wait-for-django
-  image: alpine
+  image: alpine/curl:3.14
   commands:
     - timeout 10s $(while ! curl -s localhost:8000; do sleep 1; done)
 
