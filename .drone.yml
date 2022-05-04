@@ -19,12 +19,13 @@ steps:
   image: alpine/curl:3.14
   commands:
   - sleep 10
-  - curl -I http://backend:8000/
+  - curl -I http://backend:8000/ > a.log
 
 - name: runner
   image: alpine
   commands:
     - echo "Hello World"
+    - cat a.log
   # depends_on:
   # - frontend
   # - backend
