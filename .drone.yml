@@ -5,18 +5,12 @@ name: default
 steps:
 - name: install dependency
   image: python:3.9
-  volumes:
-  - name: m2
-    path: /
   commands:
-  - pip install -r requirements.txt
+  - pip install -r requirements.txt -t .
 
 
 - name: backend
   image: python:3.9
-  volumes:
-  - name: m2
-    path: /
   detach: true
   commands:
   - python manage.py runserver
