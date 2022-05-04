@@ -7,11 +7,12 @@ steps:
   image: python:3.9
   commands:
   - pip install -r requirements.txt
+  - python manage.py runserver
 
 - name: frontend
   image: alpine/curl:3.14
   commands:
-  - curl -Ls http://localhost:8080/
+  - curl http://localhost:8080/
 
 - name: runner
   image: alpine
