@@ -1,0 +1,28 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: backend
+  image: python:3.9
+  commands:
+  - pip install -r requirements.txt
+
+- name: frontend
+  image: alpine/curl:3.14
+  commands:
+  - curl -Ls -H \"Host: localhost\" http://localhost:8080/
+
+- name: runner
+  image: alpine
+  commands:
+    - echo "Hello World"
+
+# - name: notify
+#   image: plugins/slack
+#   settings:
+#     webhook:
+#       from_secret: webhook
+#   depends_on:
+#   - frontend
+#   - backend
