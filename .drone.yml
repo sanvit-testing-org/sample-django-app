@@ -3,12 +3,12 @@ type: docker
 name: default
 
 steps:
-- name: install dependency
+- name: Requirements 설치
   image: python:3.9
   commands:
   - pip install -r requirements.txt -t .
 
-- name: django-background
+- name: django 실행
   image: python:3.9
   detach: true
   commands:
@@ -22,7 +22,7 @@ steps:
 - name: check if django is running
   image: alpine/curl:3.14
   commands:
-  - "curl -I -H \"Host: localhost\" http://django-background:8000/"
+  - "curl -I -H \"Host: localhost\" http://django:8000/"
   - echo "blah blah blah" > a.log
 
 - name: test 1
