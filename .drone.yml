@@ -19,7 +19,7 @@ steps:
   image: alpine/curl:3.14
   commands:
   - sleep 10
-  - curl http://backend:8000/
+  - curl -I http://backend:8000/
 
 - name: runner
   image: alpine
