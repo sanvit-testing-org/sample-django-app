@@ -5,6 +5,7 @@ name: default
 steps:
 - name: backend
   image: python:3.9
+  detach: true
   commands:
   - pip install -r requirements.txt
   - python manage.py runserver
@@ -12,15 +13,15 @@ steps:
 - name: frontend
   image: alpine/curl:3.14
   commands:
-  - curl http://localhost:8080/
+  - curl http://backend:8080/
 
 - name: runner
   image: alpine
   commands:
     - echo "Hello World"
-  depends_on:
-  - frontend
-  - backend
+  # depends_on:
+  # - frontend
+  # - backend
 
 # - name: notify
 #   image: plugins/slack
