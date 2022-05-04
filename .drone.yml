@@ -3,21 +3,21 @@ type: docker
 name: default
 
 steps:
-- name: Requirements 설치
+- name: install-dependencies
   image: python:3.9
   commands:
   - pip install -r requirements.txt -t .
 
-- name: django 실행
+- name: django-server
   image: python:3.9
   detach: true
   commands:
   - python manage.py runserver 0.0.0.0:8000
 
-- name: wait for django
+- name: wait-for-django
   image: alpine
   commands:
-    - sleep 10
+    - timeout 10s $(while ! curl -s localhost:8000; do sleep 1; done)
 
 - name: check if django is running
   image: alpine/curl:3.14
