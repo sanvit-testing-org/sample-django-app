@@ -19,7 +19,7 @@ steps:
   image: alpine/curl:3.14
   commands:
   - sleep 10
-  - "curl -I -H \"Host: localhost\" http://backend:8000/ > a.log"
+  - "curl -I -H \"Host: localhost\" http://django-background:8000/ > a.log"
 
 - name: runner
   image: alpine
