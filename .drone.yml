@@ -23,6 +23,7 @@ steps:
   image: alpine/curl:3.14
   commands:
   - "curl -I -H \"Host: localhost\" http://django-background:8000/"
+  - echo "blah blah blah" > a.log
 
 - name: test 1
   image: alpine
