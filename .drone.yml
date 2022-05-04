@@ -13,7 +13,6 @@ steps:
   image: python:3.9
   detach: true
   commands:
-  - pip install -r requirements.txt
   - python manage.py runserver
 
 - name: frontend
