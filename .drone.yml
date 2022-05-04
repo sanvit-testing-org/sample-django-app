@@ -17,12 +17,12 @@ steps:
 - name: wait-for-django
   image: alpine/curl:3.14
   commands:
-    - curl --retry 10 --retry-delay 1 --retry-all-errors -s -o /dev/null localhost:8000
+    - curl --retry 10 --retry-delay 1 --retry-all-errors -s -o /dev/null django-server:8000
 
 - name: check if django is running
   image: alpine/curl:3.14
   commands:
-  - "curl -I -H \"Host: localhost\" http://django:8000/"
+  - "curl -I -H \"Host: localhost\" http://django-server:8000/"
   - echo "blah blah blah" > a.log
 
 - name: test 1
