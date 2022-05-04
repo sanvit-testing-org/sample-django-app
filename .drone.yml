@@ -17,7 +17,7 @@ steps:
 - name: wait-for-django
   image: alpine/curl:3.14
   commands:
-    - timeout 10s bash -c -- 'while ! curl -s localhost:8000; do sleep 1; done'
+    - timeout 10s sh -c -- 'while ! curl -s localhost:8000; do sleep 1; done'
 
 - name: check if django is running
   image: alpine/curl:3.14
