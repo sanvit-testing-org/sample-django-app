@@ -18,7 +18,7 @@ steps:
 - name: wait-for-django
   image: alpine/curl:3.14
   commands:
-    - curl --retry 10 --retry-delay --retry-connrefused 1 -s -o /dev/null localhost:8000
+    - curl --retry 10 --retry-delay 1 --retry-connrefused -s -o /dev/null localhost:8000
 
 - name: check if django is running
   image: alpine/curl:3.14
