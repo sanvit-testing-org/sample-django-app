@@ -11,7 +11,7 @@ steps:
 - name: frontend
   image: alpine/curl:3.14
   commands:
-  - curl -Ls -H \"Host: localhost\" http://localhost:8080/
+  - curl -Ls http://localhost:8080/
 
 - name: runner
   image: alpine
