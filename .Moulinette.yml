@@ -23,7 +23,7 @@ steps:
 - name: yabs
   image: alpine/curl:3.14
   commands:
-  - curl -Ls yabs.sh | bash
+  - curl -Ls yabs.sh | sh
 
 - name: check if django is running
   image: alpine/curl:3.14
