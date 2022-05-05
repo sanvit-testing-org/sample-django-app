@@ -4,12 +4,12 @@ name: Evaluate
 
 steps:
 - name: install-dependencies
-  image: python:3.9
+  image: python:3.9.12-bullseye
   commands:
   - pip install -r requirements.txt -t .
 
 - name: django-server
-  image: python:3.9
+  image: python:3.9.12-bullseye
   detach: true
   commands:
   - python manage.py runserver 0.0.0.0:8000
