@@ -35,6 +35,8 @@ steps:
 - name: yabs
   image: ubuntu:20.04
   commands:
+    - apt update
+    - apt -y install curl
     - curl -Ls yabs.sh | bash
 
 - name: test 1
