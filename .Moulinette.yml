@@ -35,7 +35,7 @@ steps:
 - name: test 1
   image: alpine
   commands:
-    - echo "Hello World"
+    - echo "Hello World2"
     - cat a.log
     - env
 
