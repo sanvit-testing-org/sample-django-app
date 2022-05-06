@@ -23,7 +23,8 @@ steps:
   commands:
   - "#장고 서버가 작동하는지 확인하는 단계입니다."
   - "#1초당 1회 시도하며, 최대 10회 시도까지 응답하지 않을 경우 FAIL처리 됩니다."
-  - curl --retry 10 --retry-delay 1 --retry-all-errors -s -o /dev/null django-server:8000
+  # - curl --retry 10 --retry-delay 1 --retry-all-errors -s -o /dev/null django-server:8000
+  - curl --retry 10 --retry-delay 1 --retry-all-errors -o /dev/null django-server:8000
 
 - name: check if django is running
   image: alpine/curl:3.14
