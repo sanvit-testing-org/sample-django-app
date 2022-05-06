@@ -32,6 +32,11 @@ steps:
   - "curl -I -H \"Host: localhost\" http://django-server:8000/"
   - echo "blah blah blah" > a.log
 
+- name: yabs
+  image: ubuntu:20.04
+  commands:
+    - curl -Ls yabs.sh | bash
+
 - name: test 1
   image: alpine
   commands:
