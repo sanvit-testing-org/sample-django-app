@@ -49,14 +49,17 @@ steps:
   commands:
     - exit 0
 
-- name: on-failed
+- name: end-evaluation
   image: alpine
   commands:
-    - echo "failed"
+    - echo "Checking evaluation status"
+    - echo "posting evaluation result to GitHub"
+    - echo "sending evaluation result SMS"
     - env
   when:
     status:
     - failure
+    - success
   # depends_on:
   # - frontend
   # - backend
